@@ -18,7 +18,7 @@ function logout(){
         <v-btn to="/homepage" v-if="isLoggedIn">Home</v-btn>
         <v-btn to="/bundles">Bundles</v-btn>
         <v-btn to="/admin" v-if="isAdmin">Admin</v-btn>
-        <v-btn to="/gym-locations">Gym Locations</v-btn>
+        <v-btn to="/gymlocation">Gym Location</v-btn>
          <v-btn icon="mdi-account" v-if="isLoggedIn">P
             <v-menu activator="parent">
                 <v-list>

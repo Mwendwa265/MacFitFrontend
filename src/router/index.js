@@ -27,7 +27,7 @@ const router = createRouter({
     component:SignUp,
   },
   { 
-    path:'/home',
+    path:'/homePage',
     name:'HomePage',
     component:HomePage,
   },
@@ -42,7 +42,7 @@ const router = createRouter({
     component:Bundles,
   },
   {
-    path:'/gym-location',
+    path:'/gymlocation',
     name:'GymLocation',
     component:GymLocation,
   },

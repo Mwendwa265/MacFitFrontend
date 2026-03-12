@@ -93,13 +93,23 @@
 
     <!-- Contact us -->
 <v-container  style="background-color:#CFD0D6 "  max-width="100%" >
-    <v-row class="text-centre">
-     <div   class="text-title-large font-weight-light text-medium-emphasis mb-8">Get in Touch</div>
-     <div   class="text-title-large font-weight-light text-medium-emphasis mb-8">0722492864 | macfit@example.com</div><br>
-     <div   class="text-title-large font-weight-light text-medium-emphasis mb-8">Opening hours :Mon-Fri: 5.00am-9.00pm | Sat: 5.30am-6.00pm | Sun:6.00am-6.00pm</div><br>
-     <div   class="text-title-large font-weight-light text-medium-emphasis mb-8">MacFit GYM,4th floor Joel's Mall,Nairobi</div>
-     <div   class="text-title-large font-weight-light text-medium-emphasis mb-8"></div>
-     <div   class="text-title-large font-weight-light text-medium-emphasis mb-8"></div>
+    <v-row >
+        <v-col md="4" justify="center" align="center">   
+            <v-icon color="#3A4B68" icon="mdi-phone" size="large" class="mt-10"></v-icon>
+            <div   class="text-title-large font-weight-light text-medium-emphasis mb-8 ">Get in Touch:0722492864</div>
+        </v-col>
+        <v-col md="4" justify="center" align="center">
+             <v-icon color="#3A4B68" icon="mdi-email" size="large" class="mt-10"></v-icon>
+             <div   class="text-title-large font-weight-light text-medium-emphasis mb-8 ">macfit@example.com</div><br>
+        </v-col>
+        <v-col md="4" justify="center" align="center">
+           <v-icon color="#3A4B68" icon="mdi-clock" size="large" class="mt-10"></v-icon>
+           <div   class="text-title-large font-weight-light text-medium-emphasis mb-8 ">Opening hours : Mon-Fri: 5.00am-9.00pm | Sat: 5.30am-6.00pm | Sun:6.00am-6.00pm</div><br> 
+        </v-col>
+        <v-col md="4" justify="center" align="center">
+            <v-icon color="#3A4B68" icon="mdi-map-marker" size="large" class="mt-10"></v-icon>
+            <div   class="text-title-large font-weight-light text-medium-emphasis mb-8  ">MacFit GYM,4th floor J Mall,Nairobi</div><br>
+        </v-col>
     </v-row>
 </v-container>
 </template>
