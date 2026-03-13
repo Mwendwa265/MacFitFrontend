@@ -1,4 +1,9 @@
 <script setup>
+import { useRouter } from "vue-router";
+import {useAuth} from '../services/auth'
+
+const router = useRouter();
+const { register, loading, error } = useAuth()
  import { ref } from 'vue'
 
   const rules = {
@@ -21,28 +26,33 @@ const phoneNumber = ref(null)
 const dateOfBirth = ref(null)
 const gymLocations = ref(null)
 
+const SignUp = async () => {
 
-function SignUp(){
-    // create user object
-    const userDetails = {
-        name: firstName.value + ' ' + lastName.value,
-        email: email.value,
-        dateOfBirth: dateOfBirth.value,
-        gender: gender.value,
-        gymLocations: gymLocations.value,
-        password: password.value,
-        phoneNumber: phoneNumber.value,
-    }
+  loading.value = true;
+  error.value = "";
 
-    // store this data
- try{
-    localStorage.setItem('userDetails', JSON.stringify(userDetails))
+  const formData = new FormData();
+  formData.append("name", firstName.value +' '+ lastName.value,);
+  formData.append("email", email.value);
+  formData.append("phone", phoneNumber.value);
+  formData.append("dateOfBirth ", dateOfBirth.value);
+  formData.append("gender", gender.value);
+  formData.append("gymLocations", gymLocations.value);
+  formData.append("password", password.value);
+  formData.append("role_id", 4);
 
- }catch(error){
-    console.error('Error storing user details:', error)
-
- }
-}
+  try {
+    await register(formData)
+   
+    // Redirect after successful signup
+    router.push('/homePage').then(() => {
+        router.go(0); // Reloads the current route
+    });
+  } catch (err) {
+    // Error is already handled by the auth service
+    console.error('Sign up failed', err)
+  }
+};
 
   const confirmPassword = ref(null)
   const show1confirm = ref(false)
@@ -147,11 +157,11 @@ function SignUp(){
                         <v-col md="12">
                             <v-text-field  
                                 v-model="confirmPassword"
-                                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                :append-icon="show1confirm ? 'mdi-eye' : 'mdi-eye-off'"
                                 :rules="[rules.required, rules.min]"
                                 :type="show1confirm ? 'text' : 'password'"
                                 variant="outlined"
-                                @click:append="show1 = !show1"></v-text-field>
+                                @click:append="show1confirm = !show1confirm"></v-text-field>
                         </v-col>
                     </v-row>
 
