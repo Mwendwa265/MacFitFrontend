@@ -63,13 +63,14 @@ const SignUp = async () => {
 
 <template>
     
-    <v-container width="60%">
+    <v-container width="60%" >
         <v-row>
+            
             <v-col md="12">
                 <v-form>
                     
                         <v-col md="12" class="text-center">
-                            <img src="/FullLogo_Transparent_NoBuffer.png" alt="MacFit Gym Logo" class="logo"  height="20%"  width="20%"/>
+                            <img src="/macfitLogo.png" alt="MacFit Gym Logo" class="logo"  height="20%"  width="20%"/>
                         </v-col>
 
                     
@@ -83,8 +84,8 @@ const SignUp = async () => {
                         <v-col md="12" class="text-center">
                             <div  class="text-title-large font-weight-light text-medium text-left" >Firstname</div>
                         </v-col>
-                        <v-col md="12">
-                            <v-text-field variant="outlined" v-model="firstName"></v-text-field>
+                        <v-col md="6">
+                            <v-text-field variant="outlined" v-model="firstName" ></v-text-field>
                         </v-col>
                     </v-row>
 
@@ -92,15 +93,16 @@ const SignUp = async () => {
                         <v-col md="12" class="text-center">
                             <div  class="text-title-large font-weight-light text-medium text-left" >Lastname</div>
                         </v-col>
-                        <v-col md="12">
+                        <v-col md="6">
                             <v-text-field variant="outlined" v-model="lastName"></v-text-field>
                         </v-col>
                     </v-row>
+
                     <v-row>
                         <v-col md="12" class="text-center">
                             <div  class="text-title-large font-weight-light text-medium text-left" >Email</div>
                         </v-col>
-                        <v-col md="12">
+                        <v-col md="6">
                             <v-text-field variant="outlined" v-model="email"></v-text-field>
                         </v-col>
                         
@@ -130,7 +132,7 @@ const SignUp = async () => {
                         <v-col md="12" class="text-center">
                             <div  class="text-title-large font-weight-light text-medium text-left" >Phone number</div>
                         </v-col>
-                        <v-col md="12">
+                        <v-col md="6">
                             <v-text-field variant="outlined" v-model="phoneNumber"></v-text-field>
                         </v-col>
                     </v-row>
@@ -139,7 +141,7 @@ const SignUp = async () => {
                         <v-col md="12" class="text-center">
                             <div class="text-title-large font-weight-light text-medium text-left">Password</div>
                         </v-col>
-                        <v-col md="12">
+                        <v-col md="6">
                             <v-text-field  
                                 v-model="password"
                                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -154,7 +156,7 @@ const SignUp = async () => {
                         <v-col md="12" class="text-center">
                             <div class="text-title-large font-weight-light text-medium text-left">Confirm password</div>
                         </v-col>
-                        <v-col md="12">
+                        <v-col md="6">
                             <v-text-field  
                                 v-model="confirmPassword"
                                 :append-icon="show1confirm ? 'mdi-eye' : 'mdi-eye-off'"
@@ -181,7 +183,7 @@ const SignUp = async () => {
 
                     <v-row>
                         <v-col md="4">
-                            <v-btn color="#594976" variant="elevated" @click="SignUp">Sign Up</v-btn>
+                            <v-btn color="black" variant="elevated" @click="SignUp">Sign Up</v-btn>
                         </v-col>
                     </v-row>
 
@@ -194,6 +196,7 @@ const SignUp = async () => {
                     </v-row>
                 </v-form>
             </v-col>
+            
         </v-row>
     </v-container>
 </template>

@@ -33,7 +33,7 @@ function subscribe(){
 
 <template >
     
-    <v-container class="mt-10 p-10" style="background-color:#CFD0D6 "  >
+    <v-container class="mt-10 p-10" style="background-color:darkslategray"  >
         <v-row class=" flex items-center justify-center ">
             <div class="text-display-medium mb-12 text-center w-full h-full ">Bundles and Pricing</div>
         </v-row>
@@ -90,7 +90,7 @@ function subscribe(){
     </v-container>
 
     <!-- What's included -->
-     <v-container class="mt-10 p-10" style="background-color:#CFD0D6 ">
+     <v-container class="mt-10 p-10" style="background-color:darkslategray ">
         <v-row>
             <v-col md="12">
                 <div class="text-display-medium mb-12 "> What's included in our bundle</div>
@@ -145,10 +145,10 @@ function subscribe(){
 </v-container>
 
 <!-- How to join -->
-<v-container class="mt-10 p-10" style="background-color:#CFD0D6 ">
+<v-container class="mt-10 p-10" style="background-color:darkslategray">
     <v-row>
         <v-col>
-          <div>How to join</div>
+          <div class="text-display-medium"><strong>How to join</strong></div>
         </v-col>
     </v-row>
 

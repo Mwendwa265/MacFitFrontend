@@ -38,7 +38,7 @@ const router = useRouter()
                 <v-form>
                     
                         <v-col md="3" class="text-center">
-                             <img src="/FullLogo_Transparent_NoBuffer.png" alt="MacFit Gym Logo" class="logo"  height="20%" width="20%"/>
+                             <img src="/macfitLogo.png" alt="MacFit Gym Logo" class="logo"  height="20%" width="20%"/>
                         </v-col>
 
                      
@@ -52,8 +52,8 @@ const router = useRouter()
                         <v-col md="12" class="text-center">
                             <div  class="text-title-large font-weight-light text-medium text-left" >Username</div>
                         </v-col>
-                        <v-col md="12">
-                            <v-text-field v-model="username"></v-text-field>
+                        <v-col md="11">
+                            <v-text-field v-model="username" label="Email" variant="outlined"></v-text-field>
                         </v-col>
                      </v-row>
 
@@ -76,7 +76,7 @@ const router = useRouter()
 
                      <v-row>
                         <v-col md="4">
-                            <v-btn color="#594976" variant="elevated" @click="Login">Login</v-btn>
+                            <v-btn color="black" variant="elevated" @click="Login">Login</v-btn>
                         </v-col>
                      </v-row>
 

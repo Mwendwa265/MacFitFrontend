@@ -11,9 +11,9 @@ function logout(){
 }
 </script>
 <template>
-    <v-app-bar color="#594976">
+    <v-app-bar color="black">
         <v-app-bar-title>
-            <router-link to="/">MacFit Gym</router-link>
+            <router-link to="/"><strong>MacFit Gym</strong></router-link>
         </v-app-bar-title>
         <v-btn to="/homepage" v-if="isLoggedIn">Home</v-btn>
         <v-btn to="/bundles">Bundles</v-btn>
