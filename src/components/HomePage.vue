@@ -34,7 +34,7 @@
                     <v-img src="yoga.jpg" cover></v-img>
                     <v-card-title>Yoga sessions</v-card-title>
                     <v-card-text>Join our yoga classes and improve your flexibility and strength</v-card-text>
-                    <v-btn color="#3A4B68">READ MORE</v-btn>
+                    <v-btn color="#B279A7">READ MORE</v-btn>
                 </v-card>
             </v-col>
         
@@ -43,7 +43,7 @@
                     <v-img src="menWorkoutSession.jpg" cover></v-img>
                     <v-card-title>Men's Workout Sessions</v-card-title>
                     <v-card-text>Join our targeted workout sessions designed specifically for men to build strength and improve fitness.</v-card-text>
-                    <v-btn color="#3A4B68">READ MORE</v-btn>
+                    <v-btn color="#B279A7">READ MORE</v-btn>
                 </v-card>
             </v-col>
 
@@ -52,7 +52,7 @@
                     <v-img src="womenWorkoutSession.jpg" cover></v-img>
                     <v-card-title>Women's Workout Sessions</v-card-title>
                     <v-card-text>Join our supportive workout sessions designed specifically for women to build confidence and improve fitness.</v-card-text>
-                    <v-btn color="#3A4B68">READ MORE</v-btn>
+                    <v-btn color="#B279A7">READ MORE</v-btn>
                 </v-card>
             </v-col>
         </v-row>
@@ -61,7 +61,7 @@
     <v-container  style="background-color:#CFD0D6 "  max-width="100%" >
        <v-row justify="center">
         <v-col md="4" >  
-            <div   class="text-title-large font-weight-light text-medium-emphasis mb-8 mdi mdi-copyright" ><strong>MacFit GYM</strong></div>
+            <div   class="text-title-large font-weight-light text-medium-emphasis mb-8 mdi mdi-copyright" ><strong>MacFit GYM 2026</strong></div>
         </v-col>
 
        </v-row>

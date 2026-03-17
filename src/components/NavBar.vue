@@ -1,14 +1,15 @@
 <script setup>
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
+import {useAuth} from '../services/auth'
 
+const { logout } = useAuth()
 const router = useRouter();
 
-const isLoggedIn = localStorage.getItem( "isLoggedIn")
+
+
+const isLoggedIn = localStorage.getItem( "authToken")
 const isAdmin = true
-function logout(){
-    localStorage.removeItem( "isLoggedIn")
-    router.push('/')
-}
+
 </script>
 <template>
     <v-app-bar color="black">
@@ -26,7 +27,7 @@ function logout(){
                         <v-btn color="primary" to="/profile">Profile</v-btn>                        
                     </v-list-item>
                     <v-list-item>
-                        <v-btn color="primary" @click="logout()">Logout</v-btn>                        
+                        <v-btn color="primary" @click="()=> { logout(); router.push('/')}" class="mdi mdi-logout-variant " >Logout</v-btn>                        
                     </v-list-item>
                 </v-list>
             </v-menu>

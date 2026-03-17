@@ -35,7 +35,7 @@ function subscribe(){
     
     <v-container class="mt-10 p-10" style="background-color:darkslategray"  >
         <v-row class=" flex items-center justify-center ">
-            <div class="text-display-medium mb-12 text-center w-full h-full ">Bundles and Pricing</div>
+            <div class="text-display-medium mb-12 text-center w-full h-full "><strong>Bundles and Pricing</strong></div>
         </v-row>
         <v-row>
              <div class="text-display-medium mb-12 text-center font-italic">click to subscribe</div>
@@ -93,7 +93,7 @@ function subscribe(){
      <v-container class="mt-10 p-10" style="background-color:darkslategray ">
         <v-row>
             <v-col md="12">
-                <div class="text-display-medium mb-12 "> What's included in our bundle</div>
+                <div class="text-display-medium mb-12 "> <strong>What's included in our bundle</strong></div>
             </v-col>
         </v-row>
 
@@ -163,6 +163,28 @@ function subscribe(){
         </v-col>
     </v-row>
 </v-container>
+
+<v-container  style="background-color:black "  max-width="100%" class="mt-10 p-10"  >
+    <v-row >
+        <v-col md="6" justify="center" align="center">   
+            <v-icon color="#3A4B68" icon="mdi-phone" size="large" class="mt-10"></v-icon>
+            <div class="text-white">Get in Touch:0722492864</div>
+        </v-col>
+        <v-col md="6" justify="center" align="center">
+             <v-icon color="#3A4B68" icon="mdi-email" size="large" class="mt-10"></v-icon>
+             <div   class="text-white">macfit@example.com</div><br>
+        </v-col>
+        <v-col md="6" justify="center" align="center">
+           <v-icon color="#3A4B68" icon="mdi-clock" size="large" class="mt-10"></v-icon>
+           <div   class="text-white">Opening hours : Mon-Fri: 5.00am-9.00pm | Sat: 5.30am-6.00pm | Sun:6.00am-6.00pm</div><br> 
+        </v-col>
+        <v-col md="6" justify="center" align="center">
+            <v-icon color="#3A4B68" icon="mdi-map-marker" size="large" class="mt-10"></v-icon>
+            <div  class="text-white">MacFit GYM,4th floor J Mall,Nairobi</div><br>
+        </v-col>
+    </v-row>
+</v-container>
+
       <!-- dialog -->
   <v-dialog v-model="showBundleDialog" max-width="600" >
 

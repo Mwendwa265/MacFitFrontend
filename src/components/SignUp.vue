@@ -24,7 +24,7 @@ const email = ref(null)
 const gender = ref(null)
 const phoneNumber = ref(null)
 const dateOfBirth = ref(null)
-const gymLocations = ref(null)
+const gymLocation = ref(null)
 
 const SignUp = async () => {
 
@@ -34,10 +34,10 @@ const SignUp = async () => {
   const formData = new FormData();
   formData.append("name", firstName.value +' '+ lastName.value,);
   formData.append("email", email.value);
-  formData.append("phone", phoneNumber.value);
+  formData.append("phoneNumber", phoneNumber.value);
   formData.append("dateOfBirth ", dateOfBirth.value);
   formData.append("gender", gender.value);
-  formData.append("gymLocations", gymLocations.value);
+  formData.append("gymLocation", gymLocation.value);
   formData.append("password", password.value);
   formData.append("role_id", 4);
 
@@ -170,7 +170,7 @@ const SignUp = async () => {
 
                       <v-row>
                         <v-col md="12" class="text-center">
-                            <div  class="text-title-large font-weight-light text-medium text-left" >Gym locations</div>
+                            <div  class="text-title-large font-weight-light text-medium text-left" >Gym location</div>
                         </v-col>
                         <v-col md="6">
                                 <v-select

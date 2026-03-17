@@ -24,4 +24,5 @@ const userDetails = JSON.parse(localStorage.getItem('userDetails'))
         </v-col>
      </v-row>
    </v-container>
+
 </template>
