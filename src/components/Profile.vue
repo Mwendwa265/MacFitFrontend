@@ -1,5 +1,6 @@
 <script setup>
-const userDetails = JSON.parse(localStorage.getItem('userDetails'))
+const userDetails = JSON.parse(localStorage.getItem('user')) 
+
 </script>
 
 <template>
@@ -12,11 +13,12 @@ const userDetails = JSON.parse(localStorage.getItem('userDetails'))
                 <v-card-text>{{ userDetails.email }}</v-card-text>
                 <v-card-text>{{ userDetails.phoneNumber }}</v-card-text>
                 <v-card-text>{{ userDetails.gymlocations}}</v-card-text>
+                <v-card-text>{{ userDetails.gender}}</v-card-text>
                 <div v-if="userDetails.subscription">
                 <v-card-text>Your current subscriptions is: {{ userDetails.subscription.name}} at {{ userDetails.subscription.price }}  </v-card-text>
                 </div>
                 <div v-else>
-                    <v-btn color="primary" variant="outlined" to="/bundles"></v-btn>
+                    <v-btn color="primary" variant="outlined" to="/bundles">bundles</v-btn>
                 </div>
 
 
@@ -24,5 +26,6 @@ const userDetails = JSON.parse(localStorage.getItem('userDetails'))
         </v-col>
      </v-row>
    </v-container>
+ 
 
 </template>
