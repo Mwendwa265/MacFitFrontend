@@ -8,7 +8,9 @@ const loading = ref(false)
 const tab = ref(null)
 const showAddUserDialog = ref(false)
 const showAddRoleDialog = ref(false)
+const showEditRoleDialog = ref(false)
 const showAddEquipmentDialog = ref(false)
+const showEditEquipmentDialog = ref(false)
 const showEditUserDialog = ref(false)
 
 
@@ -73,19 +75,20 @@ async function addUser(){
    } 
 }
 
-//edit user
+//edit user - loads data to my form enabling me to edit
 function editUser(data){
     userIdNo.value = data.id
     fullName.value = data.name
     userRole.value = data.role_id
     email.value = data.email
     phoneNumber.value = data.phoneNumber
-    dateOfBirth.value = data.dob
+    dateOfBirth.value = data.dateOfBirth
     gymLocation.value = data.gymLocation
     gender.value = data.gender
-    showEditUserDialog.value = true
+    showEditUserDialog.value = true //opens a dialog for editing
 }
-async function updateUser(){
+// the update works after I submit the form
+async function updateUser(){    
     const formData = new FormData()
     formData.append('name', fullName.value)
     formData.append("email", email.value);
@@ -105,7 +108,7 @@ async function updateUser(){
             fetchUsers();
         })
    } catch (err) {
-      error.value = err.response?.data?.message || 'Creating screening data failed'
+      error.value = err.response?.data?.message || 'Editing data failed'
       throw err
    } 
 }
@@ -117,6 +120,7 @@ async function updateUser(){
 const roles = ref(null)
 const roleName = ref(null)
 const roleDescription = ref(null)
+const roleId = ref(null)
 
 
 async function fetchRole(){
@@ -153,6 +157,36 @@ async function addRole(){
       throw err
    } 
 }
+// Edit role
+function editRole(data){ 
+    console.log(data)
+    roleName.value = data.name
+    roleDescription.value = data.description
+    roleId.value =  data.id
+    showEditRoleDialog.value = true
+}
+async function updateRole(){    
+    const formData = new FormData()
+    formData.append('name', roleName.value)
+    formData.append('description', roleDescription.value);
+    console.log(roleId.value)
+
+   try {
+      await api.put('updateRoles/' + roleId.value , formData,
+         { headers: { 'Authorization': `Bearer ${token}` } })
+         .then(function (response) {
+            error.value = ''
+            loading.value = false
+            close()
+            fetchRole();
+        })
+   } catch (err) {
+      error.value = err.response?.data?.message || 'Editing data failed'
+      throw err
+   } 
+}
+    
+
 
 
 //equipment
@@ -162,6 +196,7 @@ const equipmentUsage = ref(null)
 const  equipmentValue = ref(null)
 const equipmentStatus = ref(null)
 const equipmentModel_no = ref(null)
+const equipmentId = ref(null)
 
 async function fetchEquipment(){
 
@@ -202,12 +237,48 @@ async function addEquipment(){
       throw err
    } 
 }
+//edit equipment
+function editEquipment(data){
+    equipmentName.value = data.name
+    equipmentUsage.value = data.usage
+    equipmentValue.value = data.value
+    equipmentStatus.value = data.status
+    equipmentModel_no.value = data.model_no
+    equipmentId.value = data.id
+    showEditEquipmentDialog.value = true
+}
+async function updateEquipment(){    
+    const formData = new FormData()
+    formData.append('name', equipmentName.value)
+    formData.append('usage', equipmentUsage.value)
+    formData.append('value', equipmentValue.value)
+    formData.append('status', equipmentStatus.value)
+    formData.append('model_no', equipmentModel_no.value)
+    
+
+   try {
+      await api.put('updateEquipment/' + equipmentId.value , formData,
+         { headers: { 'Authorization': `Bearer ${token}` } })
+         .then(function (response) {
+            error.value = ''
+            loading.value = false
+            close()
+            fetchEquipment();
+        })
+   } catch (err) {
+      error.value = err.response?.data?.message || 'Editing data failed'
+      throw err
+   } 
+}
+
 //clear reactive model values must use on project if i have a form, this ensures everything is set to null when the form is closed
 function close(){
     showAddUserDialog.value = false
     showEditUserDialog.value = false
     showAddEquipmentDialog.value = false
+    showEditEquipmentDialog.value = false
     showAddRoleDialog.value =  false
+    showEditRoleDialog.value = false
 
 
     fullName.value = null
@@ -482,7 +553,7 @@ onMounted(() => {
                     </v-card>
                 </v-form>
             </v-dialog>
-            <!-- edit user dialog -->
+        <!-- edit user dialog -->
              <v-dialog v-model="showEditUserDialog" max-width="600">
                 <v-form @submit.prevent >
                     <v-card>
@@ -538,6 +609,7 @@ onMounted(() => {
                                     <v-radio-group v-model="gender" :rules="[rules.required]" inline>
                                         <v-radio label="Male" value="Male"></v-radio>
                                         <v-radio label="Female" value="Female"></v-radio>
+                                        <v-radio label="Prefer not to say" value="Prefer not to say"></v-radio>
                                     </v-radio-group>
                                 </v-col>
                             </v-row>
@@ -550,7 +622,7 @@ onMounted(() => {
                     </v-card>
                 </v-form>
             </v-dialog>
-            <!-- Add Equipment  Dialog-->
+        <!-- Add Equipment  Dialog-->
             <v-dialog v-model="showAddEquipmentDialog" max-width="600">
                 <v-form @submit.prevent >
                     <v-card>
@@ -594,7 +666,54 @@ onMounted(() => {
                     </v-card>
                 </v-form>
             </v-dialog>
-            <!-- Add Role  Dialog-->
+        <!-- edit equipment dialog -->
+             <v-dialog v-model="showEditEquipmentDialog" max-width="600">
+                <v-form @submit.prevent >
+                    <v-card>
+                        <v-card-title class="pa-6">
+                        <v-row>
+                                Edit Equipment
+                                <v-spacer></v-spacer>
+                                <v-btn class="ma-2" color="blue-darken-2" icon="mdi-close" @click="close();"></v-btn>
+                            </v-row>
+                        </v-card-title>
+                        <v-card-text>
+                            <v-row dense>
+                                <v-col >
+                                    <v-text-field label="Name" v-model="equipmentName" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                            
+                             <v-row>
+                                <v-col md="6">
+                                    <v-text-field label="usage" v-model="equipmentUsage" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col md="6">
+                                    <v-text-field label="value" v-model="equipmentValue" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col md="6">
+                                    <v-text-field label="status" v-model="equipmentStatus" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col md="6">
+                                    <v-text-field label="model_no" v-model="equipmentModel_no" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn text="Close" variant="plain" @click="close()" ></v-btn>
+                            <v-btn color="primary" type="submit" text="Update" variant="tonal" @click="updateEquipment()" ></v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-form>
+            </v-dialog>
+        <!-- Add Role  Dialog-->
             <v-dialog v-model="showAddRoleDialog" max-width="600">
                 <v-form @submit.prevent >
                     <v-card>
@@ -619,6 +738,38 @@ onMounted(() => {
                             <v-spacer></v-spacer>
                             <v-btn text="Close" variant="plain" @click="close()" ></v-btn>
                             <v-btn color="primary"  text="Save" variant="tonal" @click="addRole()" ></v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-form>
+            </v-dialog>
+        <!-- edit role dialog -->
+             <v-dialog v-model="showEditRoleDialog" max-width="600">
+                <v-form @submit.prevent >
+                    <v-card>
+                        <v-card-title class="pa-6">
+                        <v-row>
+                                Edit Role
+                                <v-spacer></v-spacer>
+                                <v-btn class="ma-2" color="blue-darken-2" icon="mdi-close" @click="close();"></v-btn>
+                            </v-row>
+                        </v-card-title>
+                        <v-card-text>
+                            <v-row dense>
+                                <v-col >
+                                    <v-text-field label="Name" v-model="roleName" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                            
+                             <v-row>
+                                <v-col md="6">
+                                    <v-text-field label="Description" v-model="roleDescription" required :rules="[rules.required]"></v-text-field>
+                                </v-col>
+                            </v-row>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn text="Close" variant="plain" @click="close()" ></v-btn>
+                            <v-btn color="primary" type="submit" text="Update" variant="tonal" @click="updateRole()" ></v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-form>
